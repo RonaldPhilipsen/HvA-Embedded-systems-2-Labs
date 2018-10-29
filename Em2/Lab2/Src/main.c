@@ -30,7 +30,7 @@ int main(void)
 	// Enable GPIO A to H 
 	*((int*)(RCCp + 0x1C)) |= 0x3f;
 
-	//enable the system configuration controller cloc 
+	//enable the system configuration controller clock
 	*((int*)(RCCp + 0x20)) |= 1;
 
 	// PBp has the value of the gpio B register with offset 0x00
