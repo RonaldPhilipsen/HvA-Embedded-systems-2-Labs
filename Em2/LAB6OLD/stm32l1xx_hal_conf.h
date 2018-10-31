@@ -2,7 +2,9 @@
   ******************************************************************************
   * @file    stm32l1xx_hal_conf.h
   * @author  MCD Application Team
-  * @brief   HAL configuration file. 
+  * @brief   HAL configuration template file. 
+  *          This file should be copied to the application folder and renamed
+  *          to stm32l1xx_hal_conf.h.
   ******************************************************************************
   * @attention
   *
@@ -49,34 +51,34 @@
   * @brief This is the list of modules to be used in the HAL driver 
   */
 #define HAL_MODULE_ENABLED  
-/* #define HAL_ADC_MODULE_ENABLED */
-/* #define HAL_COMP_MODULE_ENABLED */
+#define HAL_ADC_MODULE_ENABLED
+#define HAL_COMP_MODULE_ENABLED
 #define HAL_CORTEX_MODULE_ENABLED
-/* #define HAL_CRC_MODULE_ENABLED */
-/* #define HAL_CRYP_MODULE_ENABLED */
-/* #define HAL_DAC_MODULE_ENABLE */
-/* #define HAL_DMA_MODULE_ENABLED  */
+#define HAL_CRC_MODULE_ENABLED
+#define HAL_CRYP_MODULE_ENABLED
+#define HAL_DAC_MODULE_ENABLED
+#define HAL_DMA_MODULE_ENABLED
 #define HAL_FLASH_MODULE_ENABLED
 #define HAL_GPIO_MODULE_ENABLED
-/* #define HAL_I2C_MODULE_ENABLED */
-/* #define HAL_I2S_MODULE_ENABLED */
-/* #define HAL_IRDA_MODULE_ENABLED */
-/* #define HAL_IWDG_MODULE_ENABLED */
+#define HAL_I2C_MODULE_ENABLED
+#define HAL_I2S_MODULE_ENABLED
+#define HAL_IRDA_MODULE_ENABLED
+#define HAL_IWDG_MODULE_ENABLED
 #define HAL_LCD_MODULE_ENABLED
-/* #define HAL_NOR_MODULE_ENABLED */
-/* #define HAL_OPAMP_MODULE_ENABLED */
-/* #define HAL_PCD_MODULE_ENABLED */
+#define HAL_NOR_MODULE_ENABLED
+#define HAL_OPAMP_MODULE_ENABLED
+#define HAL_PCD_MODULE_ENABLED
 #define HAL_PWR_MODULE_ENABLED
 #define HAL_RCC_MODULE_ENABLED
-/* #define HAL_RTC_MODULE_ENABLED */
-/* #define HAL_SD_MODULE_ENABLED */
-/* #define HAL_SMARTCARD_MODULE_ENABLED */
-/* #define HAL_SPI_MODULE_ENABLED */
-/* #define HAL_SRAM_MODULE_ENABLED */
-/* #define HAL_TIM_MODULE_ENABLED */
-/* #define HAL_UART_MODULE_ENABLED */
-/* #define HAL_USART_MODULE_ENABLED */
-/* #define HAL_WWDG_MODULE_ENABLED */
+#define HAL_RTC_MODULE_ENABLED
+#define HAL_SD_MODULE_ENABLED
+#define HAL_SMARTCARD_MODULE_ENABLED
+#define HAL_SPI_MODULE_ENABLED
+#define HAL_SRAM_MODULE_ENABLED
+#define HAL_TIM_MODULE_ENABLED
+#define HAL_UART_MODULE_ENABLED
+#define HAL_USART_MODULE_ENABLED
+#define HAL_WWDG_MODULE_ENABLED
 
 /* ########################## Oscillator Values adaptation ####################*/
 /**
@@ -132,7 +134,7 @@
   */     
 #define  VDD_VALUE                    (3300U) /*!< Value of VDD in mv */          
 #define  TICK_INT_PRIORITY            (0x000FU)    /*!< tick interrupt priority */            
-#define  USE_RTOS                     0U     
+#define  USE_RTOS                     0U
 #define  PREFETCH_ENABLE              1U
 #define  INSTRUCTION_CACHE_ENABLE     0U
 #define  DATA_CACHE_ENABLE            0U

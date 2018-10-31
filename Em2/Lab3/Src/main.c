@@ -1,6 +1,4 @@
 #include "main.h"
-#include <stdint.h>
-#include <stm32l152c_discovery.h>
 
 extern LCD_HandleTypeDef LCDHandle;
 static volatile uint32_t TimingDelay;
@@ -8,7 +6,6 @@ void Delay(__IO uint32_t nCount);
 
 void SystemClock_Config(void);
 static void Error_Handler(void);
-RCC_ClocksTypeDef RCC_Clocks;
 
 int main(void)
 {

@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * @file    LCD/LCD_Blink_Frequency/Inc/main.h 
+  * @file    LCD/LCD_SegmentsDrive/Inc/stm32l1xx_it.h 
   * @author  MCD Application Team
-  * @brief   Header for main.c module
+  * @brief   This file contains the headers of the interrupt handlers.
   ******************************************************************************
   * @attention
   *
@@ -34,19 +34,32 @@
   */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __MAIN_H
-#define __MAIN_H
+#ifndef __STM32L1xx_IT_H
+#define __STM32L1xx_IT_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32l1xx_hal.h"
-#include "stm32l152c_discovery.h"
-#include "stm32l152c_discovery_glass_lcd.h"
-#include <stdlib.h>
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 
-#endif /* __MAIN_H */
+void NMI_Handler(void);
+void HardFault_Handler(void);
+void MemManage_Handler(void);
+void BusFault_Handler(void);
+void UsageFault_Handler(void);
+void SVC_Handler(void);
+void DebugMon_Handler(void);
+void PendSV_Handler(void);
+void SysTick_Handler(void);
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* __STM32L1xx_IT_H */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

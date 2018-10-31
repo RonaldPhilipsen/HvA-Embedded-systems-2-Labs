@@ -7,7 +7,7 @@
     <Revision>3</Revision>
   </ToolchainVersion>
   <BspID>com.sysprogs.arm.stm32</BspID>
-  <BspVersion>2018.08</BspVersion>
+  <BspVersion>4.7R3</BspVersion>
   <McuID>STM32L152RC</McuID>
   <MCUDefinitionFile>STM32L1xxxx/DeviceDefinitions/stm32l152xc.xml</MCUDefinitionFile>
   <MCUProperties>
@@ -32,9 +32,26 @@
   </MCUProperties>
   <BSPSourceFolderName>Device-specific files</BSPSourceFolderName>
   <MCUMakFile>stm32.mak</MCUMakFile>
-  <ReferencedFrameworks />
+  <ReferencedFrameworks>
+    <string>com.sysprogs.arm.stm32.utilities</string>
+    <string>com.sysprogs.arm.stm32.hal</string>
+    <string>com.sysprogs.arm.stm32.hal_systeminit</string>
+  </ReferencedFrameworks>
   <FrameworkProperties>
-    <Entries />
+    <Entries>
+      <KeyValue>
+        <Key>com.sysprogs.bspoptions.stm32.utils.cpu</Key>
+        <Value />
+      </KeyValue>
+      <KeyValue>
+        <Key>com.sysprogs.bspoptions.stm32.utils.fonts</Key>
+        <Value />
+      </KeyValue>
+      <KeyValue>
+        <Key>com.sysprogs.bspoptions.stm32.utils.log</Key>
+        <Value />
+      </KeyValue>
+    </Entries>
   </FrameworkProperties>
   <TestFrameworkProperties>
     <Entries />

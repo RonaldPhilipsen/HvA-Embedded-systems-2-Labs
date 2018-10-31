@@ -1,15 +1,17 @@
 /**
   ******************************************************************************
-  * @file    ./Lab2/Src/main.c
+  * @file    ./Lab1/Src/Main.c
   * @author  MCD Application Team
   * @brief   This example describes how to configure and use GPIOs through 
   *          the STM32L1xx HAL API.
   ******************************************************************************
   */
 
-#include "main.h"
+#include "stm32l1xx_hal.h"
+#include "stm32l152c_discovery.h"
+#include "stm32l152c_discovery_glass_lcd.h"
 
-static volatile uint32_t TimingDelay;
+uint8_t LCD_String[] = "Ron"; 
 
 void SystemClock_Config(void);
 
@@ -22,64 +24,31 @@ int main(void)
 	HAL_Init();
 	SystemClock_Config();
 
-	// Pointer to the RCC register
-	const char* RCCp = (char*) 0x40023800;
-	// Pointer to the GPIO B registers
-	int* PBp = (int *) 0x40020400;
+	/* LCD GLASS Initialization */
+	BSP_LCD_GLASS_Init();
+	BSP_LCD_GLASS_DisplayString(LCD_String);
 
-	// Enable GPIO A to H 
-	*((int*)(RCCp + 0x1C)) |= 0x3f;
-
-	//enable the system configuration controller clock
-	*((int*)(RCCp + 0x20)) |= 1;
-
-	// PBp has the value of the gpio B register with offset 0x00
-	*PBp = 0x5000;
+	BSP_LED_Init(LED_BLUE);
+	BSP_LED_Init(LED_GREEN);
 
 
-	// Set gpio 7 To high
-	*(int*)(0x40020414) |= 0x80;
-	// Set gpio 6 to low 
-	*(int*)(0x40020414) &= ~0x40;
-
-	uint delay = 1000000;
-	int direction = -1000;
-	int holdTime = 0;
-	
+	/* Infinite loop */
 	while (1)
-	{
-		if ((GPIOA->IDR & (uint16_t) 0x0001) != 0x0)
-		{
-			if (holdTime != 0)
-			{	
-				int nextStep = direction * (holdTime^2);
-				if (abs(nextStep) > delay || delay > 1500000)
-				{
-					// if the time gets too low or too high, reverse direction
-					direction *= -1;
-					nextStep = direction * (holdTime ^ 2);
-					}
-				delay += nextStep;
-			}
+	{ 
+		// 2 seconden rechtsom (clockwise)
+		BSP_LED_Off(LED_BLUE);
+		BSP_LED_On(LED_GREEN);
+		HAL_Delay(2000);
 
-			holdTime++;
-		}
-		else
-		{	
-			holdTime = 0;
-			delay = 1000000;
-		}
+		// 2 seconden linksom (counter-clockwise)
+		BSP_LED_Off(LED_GREEN);
+		BSP_LED_On(LED_BLUE);
+		HAL_Delay(2000);
 
-		uint i = 0;
-		while (i++ < delay)
-		{	
-			
-			//Wait for i to reach 100000 Seconds
-		}
-
-		// Toggle both 7 and 6 by Xor-ing the value 
-		*(int*)(0x40020414) ^= 0xC0;
-
+		// 2 seconde uit
+		BSP_LED_Off(LED_GREEN);
+		BSP_LED_Off(LED_BLUE);
+		HAL_Delay(2000);
 	}
 }
 
@@ -138,8 +107,6 @@ void SystemClock_Config(void)
 		while (1) ; 
 	}
 }
-
-
 #ifdef  USE_FULL_ASSERTs
 
 /**

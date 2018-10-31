@@ -2,40 +2,40 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source files">
-      <UniqueIdentifier>{710bcdfc-64ae-4201-ab1f-78412c890d3b}</UniqueIdentifier>
+      <UniqueIdentifier>{14c08b7a-fa48-4a79-a119-74ed5882cddd}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Header files">
-      <UniqueIdentifier>{f157faac-8533-420c-900e-276923c9997f}</UniqueIdentifier>
+      <UniqueIdentifier>{0d64df43-0e9c-44ac-9f96-7c7b2bbb9383}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
     <Filter Include="Resource files">
-      <UniqueIdentifier>{d6ab41e6-70d5-4f3d-ac7a-acf1097b80c5}</UniqueIdentifier>
+      <UniqueIdentifier>{ee03c59c-2f39-497e-8760-084dd9b539fe}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
     <Filter Include="Source files\Inc">
-      <UniqueIdentifier>{893d6d33-ee79-4bc3-9679-4347373988a4}</UniqueIdentifier>
+      <UniqueIdentifier>{9158bdf7-c8a3-4738-9176-36efa398fb3e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Src">
-      <UniqueIdentifier>{f496d999-ce37-465f-a271-22524242e2de}</UniqueIdentifier>
+      <UniqueIdentifier>{28f65a46-f5a9-4775-8c1d-aa76292878dc}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Shared sources">
-      <UniqueIdentifier>{e2c99137-d3e4-4a64-936b-ce08162e7a8c}</UniqueIdentifier>
+      <UniqueIdentifier>{5b10621f-8fa4-4e13-98fe-55f0eeddf2ff}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source files\Device-specific files">
-      <UniqueIdentifier>{8a373caf-7abe-4a41-9b05-9521c75a4907}</UniqueIdentifier>
+      <UniqueIdentifier>{26fec797-22cc-4f74-b8ba-412bea845d2d}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\Inc">
-      <UniqueIdentifier>{87938019-318e-40c9-871a-a075ad4da7be}</UniqueIdentifier>
+      <UniqueIdentifier>{f669c9ba-4327-4d07-98d1-34a0ca92aa0d}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\Src">
-      <UniqueIdentifier>{6cf49b78-99fc-4dc8-8b51-3541ae48065d}</UniqueIdentifier>
+      <UniqueIdentifier>{539369ff-2b70-4409-9a5a-549921ea0236}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header files\Device-specific files">
-      <UniqueIdentifier>{76ea5a0b-024b-4912-9dc8-232654b21023}</UniqueIdentifier>
+      <UniqueIdentifier>{5db859e2-bc01-42d4-b69c-d196ff78b542}</UniqueIdentifier>
     </Filter>
     <Filter Include="VisualGDB settings">
-      <UniqueIdentifier>{75a32229-91b3-4c7c-9856-8f9a955dde50}</UniqueIdentifier>
+      <UniqueIdentifier>{1d103ee7-d25e-49c6-99fb-b9a337b7253f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -90,28 +90,19 @@
     <ClCompile Include="$(BSP_ROOT)\STM32L1xxxx\StartupFiles\startup_stm32l152xc.c">
       <Filter>Source files\Device-specific files</Filter>
     </ClCompile>
-    <ClInclude Include="Inc\main.h">
-      <Filter>Header files\Inc</Filter>
-    </ClInclude>
     <ClInclude Include="Inc\stm32l1xx_hal_conf.h">
       <Filter>Header files\Inc</Filter>
     </ClInclude>
     <ClInclude Include="Inc\stm32l1xx_it.h">
       <Filter>Header files\Inc</Filter>
     </ClInclude>
-    <None Include="Lab3-Debug.vgdbsettings">
-      <Filter>VisualGDB settings</Filter>
-    </None>
-    <None Include="Lab3-Release.vgdbsettings">
-      <Filter>VisualGDB settings</Filter>
-    </None>
     <None Include="stm32.xml">
       <Filter>VisualGDB settings</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="main.h">
-      <Filter>Source files\Inc</Filter>
+    <ClInclude Include="Inc\main.h">
+      <Filter>Header files\Inc</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
