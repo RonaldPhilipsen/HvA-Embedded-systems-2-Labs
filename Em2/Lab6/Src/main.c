@@ -31,6 +31,8 @@ int main(void)
 
 	for (;;)
 	{
+		HAL_Delay(2000);
+
 		switch (turn) {
 		case 0:
 			output = 0;
@@ -48,31 +50,31 @@ int main(void)
 
 		HAL_DAC_SetValue(&hdac, DAC_CHANNEL_1, DAC_ALIGN_12B_R, output);
 		HAL_Delay(10);
+
 		HAL_ADC_Start(&hadc);
 
-		if (HAL_ADC_PollForConversion(&hadc, 10000) == HAL_OK)
-		{
+		if (HAL_ADC_PollForConversion(&hadc, 1000) == HAL_OK) {
 			input = HAL_ADC_GetValue(&hadc);
 		}
-		else
-		{
+		else {
 			continue;
 		}
+
 		HAL_ADC_Stop(&hadc);
 
 		char displayString[20];
 
+		// While User button pressed, show output
 		if (GPIOA->IDR & USER_BUTTON_PIN) {
-			// Als de user knop ingedrukt is, laat de output zien;
 			sprintf(displayString, "%d", output);
+			BSP_LCD_GLASS_DisplayString((uint8_t*) displayString);
+			//delay the program indefinitely while the user button is pressed.
+			while (GPIOA->IDR & USER_BUTTON_PIN) ;
 		}
-		else {
-			sprintf(displayString, "%d", input);
-		}
-
+		
+		sprintf(displayString, "%d", input);				
 		BSP_LCD_GLASS_Clear();
 		BSP_LCD_GLASS_DisplayString((uint8_t*) displayString);
-		HAL_Delay(1000);
 	}
 }
 
@@ -187,11 +189,11 @@ void ADC_Configuration()
 	hadc.Init.ExternalTrigConv = ADC_SOFTWARE_START;
 	hadc.Init.DataAlign = ADC_DATAALIGN_RIGHT;
 	hadc.Init.NbrOfConversion = 1;
-	hadc.Init.DMAContinuousRequests = ENABLE;
+	hadc.Init.DMAContinuousRequests = DISABLE;
 	hadc.Init.EOCSelection = DISABLE;
 	HAL_ADC_Init(&hadc);
 
-	adcChannel.Channel = ADC_CHANNEL_11;
+	adcChannel.Channel = ADC_CHANNEL_4;
 	adcChannel.Rank = 1;
 	adcChannel.SamplingTime = ADC_SAMPLETIME_9CYCLES;
 
@@ -199,6 +201,9 @@ void ADC_Configuration()
 	{
 		asm("bkpt 255");
 	}
+
+	
+	__HAL_ADC_ENABLE(&hadc);
 }
 
 
