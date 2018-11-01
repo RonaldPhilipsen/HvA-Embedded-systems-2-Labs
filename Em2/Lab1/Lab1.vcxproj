@@ -41,7 +41,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>Inc;C:\Users\Ronald\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32L1xxxx/STM32L1xx_HAL_Driver/Inc;C:\Users\Ronald\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32L1xxxx/CMSIS_HAL/Include;C:/Users/Ronald/AppData/Local/VisualGDB/EmbeddedBSPs/arm-eabi/com.sysprogs.arm.stm32/STM32L1xxxx/STM32L1xx_StdPeriph_Driver/inc;C:/Users/Ronald/AppData/Local/VisualGDB/EmbeddedBSPs/arm-eabi/com.sysprogs.arm.stm32/STM32L1xxxx/CMSIS_HAL/Device/ST/STM32L1xx/Include;../../../../../AppData/Local/VisualGDB/EmbeddedBSPs/arm-eabi/com.sysprogs.arm.stm32/VendorSamples/L1/Drivers/BSP/STM32L152C-Discovery;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Inc;C:\Users\Ronald\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32L1xxxx/STM32L1xx_HAL_Driver/Inc;C:\Users\Ronald\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32L1xxxx/CMSIS_HAL/Include;C:/Users/Ronald/AppData/Local/VisualGDB/EmbeddedBSPs/arm-eabi/com.sysprogs.arm.stm32/STM32L1xxxx/STM32L1xx_StdPeriph_Driver/inc;C:/Users/Ronald/AppData/Local/VisualGDB/EmbeddedBSPs/arm-eabi/com.sysprogs.arm.stm32/STM32L1xxxx/CMSIS_HAL/Device/ST/STM32L1xx/Include;C:/Users/Ronald/AppData/Local/VisualGDB/EmbeddedBSPs/arm-eabi/com.sysprogs.arm.stm32/VendorSamples/L1/Drivers/BSP/STM32L152C-Discovery;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;USE_HAL_DRIVER;USE_STM32L152C_DISCO;STM32L152xC;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
@@ -57,7 +57,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>Inc;C:\Users\Ronald\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32L1xxxx/CMSIS_HAL/Device/ST/STM32L1xx/Include;C:\Users\Ronald\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32L1xxxx/STM32L1xx_HAL_Driver/Inc;C:/Users/Ronald/AppData/Local/VisualGDB/EmbeddedBSPs/arm-eabi/com.sysprogs.arm.stm32/VendorSamples/STM32Cube_FW_L1_V1.8.0/Drivers/BSP/STM32L152C-Discovery;C:\Users\Ronald\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32L1xxxx/CMSIS_HAL/Include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Inc;C:\Users\Ronald\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32L1xxxx/STM32L1xx_HAL_Driver/Inc;C:\Users\Ronald\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32L1xxxx/CMSIS_HAL/Include;C:/Users/Ronald/AppData/Local/VisualGDB/EmbeddedBSPs/arm-eabi/com.sysprogs.arm.stm32/STM32L1xxxx/STM32L1xx_StdPeriph_Driver/inc;C:/Users/Ronald/AppData/Local/VisualGDB/EmbeddedBSPs/arm-eabi/com.sysprogs.arm.stm32/STM32L1xxxx/CMSIS_HAL/Device/ST/STM32L1xx/Include;C:/Users/Ronald/AppData/Local/VisualGDB/EmbeddedBSPs/arm-eabi/com.sysprogs.arm.stm32/VendorSamples/L1/Drivers/BSP/STM32L152C-Discovery;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>%(ClCompile.PreprocessorDefinitions);NDEBUG=1;RELEASE=1;USE_HAL_DRIVER;USE_STM32L152C_DISCO;STM32L152xC</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
@@ -72,8 +72,8 @@
     <ClCompile Include="Src\stm32l1xx_hal_msp.c" />
     <ClCompile Include="Src\stm32l1xx_it.c" />
     <ClCompile Include="Src\system_stm32l1xx.c" />
-    <ClCompile Include="..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\VendorSamples\STM32Cube_FW_L1_V1.8.0\Drivers\BSP\STM32L152C-Discovery\stm32l152c_discovery.c" />
-    <ClCompile Include="..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\VendorSamples\STM32Cube_FW_L1_V1.8.0\Drivers\BSP\STM32L152C-Discovery\stm32l152c_discovery_glass_lcd.c" />
+    <ClCompile Include="..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\VendorSamples\L1\Drivers\BSP\STM32L152C-Discovery\stm32l152c_discovery.c" />
+    <ClCompile Include="..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\VendorSamples\L1\Drivers\BSP\STM32L152C-Discovery\stm32l152c_discovery_glass_lcd.c" />
     <ClCompile Include="..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32L1xxxx\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_cortex.c" />
     <ClCompile Include="..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32L1xxxx\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal.c" />
     <ClCompile Include="..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32L1xxxx\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_rcc_ex.c" />

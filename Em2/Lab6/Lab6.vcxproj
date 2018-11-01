@@ -57,15 +57,23 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>Inc;C:\Users\Ronald\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32L1xxxx/CMSIS_HAL/Device/ST/STM32L1xx/Include;C:\Users\Ronald\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32L1xxxx/STM32L1xx_HAL_Driver/Inc;C:/Users/Ronald/AppData/Local/VisualGDB/EmbeddedBSPs/arm-eabi/com.sysprogs.arm.stm32/VendorSamples/STM32Cube_FW_L1_V1.8.0/Drivers/BSP/STM32L152C-Discovery;C:\Users\Ronald\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32/STM32L1xxxx/CMSIS_HAL/Include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>%(ClCompile.PreprocessorDefinitions);NDEBUG=1;RELEASE=1;USE_HAL_DRIVER;USE_STM32L152C_DISCO;STM32L152xC</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>Inc;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG=1;RELEASE=1;USE_HAL_DRIVER;USE_STM32L152C_DISCO;STM32L152xC;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <Link>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <LinkerScript />
+    </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Src\main.c" />
     <ClCompile Include="Src\stm32l1xx_hal_msp.c" />
     <ClCompile Include="Src\system_stm32l1xx.c" />
     <ClInclude Include="Inc\stm32l1xx_hal_conf.h" />
+    <ClCompile Include="..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\VendorSamples\L1\Drivers\BSP\STM32L152C-Discovery\stm32l152c_discovery.c" />
+    <ClCompile Include="..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\VendorSamples\L1\Drivers\BSP\STM32L152C-Discovery\stm32l152c_discovery_glass_lcd.c" />
     <ClCompile Include="$(BSP_ROOT)\STM32L1xxxx\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal.c" />
     <ClCompile Include="$(BSP_ROOT)\STM32L1xxxx\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_adc.c" />
     <ClCompile Include="$(BSP_ROOT)\STM32L1xxxx\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_adc_ex.c" />
@@ -222,6 +230,9 @@
     <ClInclude Include="$(BSP_ROOT)\STM32L1xxxx\CMSIS_HAL\Include\core_sc300.h" />
     <ClInclude Include="$(BSP_ROOT)\STM32L1xxxx\CMSIS_HAL\RTOS\Template\cmsis_os.h" />
     <ClInclude Include="Src\stm32l1xx_hal_conf.h" />
+    <None Include="stm32.props" />
+    <ClCompile Include="$(BSP_ROOT)\STM32L1xxxx\StartupFiles\startup_stm32l152xc.c" />
+    <None Include="stm32.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

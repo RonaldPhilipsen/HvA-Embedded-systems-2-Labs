@@ -109,9 +109,4 @@
       <Filter>VisualGDB settings</Filter>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="main.h">
-      <Filter>Source files\Inc</Filter>
-    </ClInclude>
-  </ItemGroup>
 </Project>

@@ -7,7 +7,6 @@
   ******************************************************************************
   */
 
-#include "stm32l1xx_hal.h"
 #include "stm32l152c_discovery.h"
 #include "stm32l152c_discovery_glass_lcd.h"
 

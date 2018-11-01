@@ -3,17 +3,13 @@ extern "C"
 #endif
 #include "stm32l152c_discovery.h"
 #include "stm32l152c_discovery_glass_lcd.h"
-
-
+					  
 void Init_GPIOs(void);
 void Config_Systick(void);
 void SystemClock_Config(void);
 
 void DAC_Configuration(void);
-void ConvertDAC(uint16_t);
 void ADC_Configuration(void);
-uint16_t readADC1(void);
-
 DAC_HandleTypeDef hdac;
 ADC_HandleTypeDef hadc;
 
@@ -28,18 +24,55 @@ int main(void)
 	DAC_Configuration();
 	ADC_Configuration();
 
-	BSP_LED_Init(LED_BLUE);
-	BSP_LED_Init(LED_GREEN);
+	uint16_t output = 0, input = 0;
+	uint8_t turn = 0;
 
 	HAL_DAC_Start(&hdac, DAC_CHANNEL_1);
-	ConvertDAC(0);
 
 	for (;;)
 	{
-		BSP_LED_On(LED_GREEN); 		
-		HAL_Delay(500);
-		BSP_LED_Off(LED_GREEN); 		
-		HAL_Delay(500);
+		switch (turn) {
+		case 0:
+			output = 0;
+			turn++;
+			break;
+		case 1:
+			output = 2047;
+			turn++;
+			break;
+		case 2:
+			output = 4095;
+			turn = 0;
+			break;
+		}
+
+		HAL_DAC_SetValue(&hdac, DAC_CHANNEL_1, DAC_ALIGN_12B_R, output);
+		HAL_Delay(10);
+		HAL_ADC_Start(&hadc);
+
+		if (HAL_ADC_PollForConversion(&hadc, 10000) == HAL_OK)
+		{
+			input = HAL_ADC_GetValue(&hadc);
+		}
+		else
+		{
+			continue;
+		}
+		HAL_ADC_Stop(&hadc);
+
+		char displayString[20];
+
+		if (GPIOA->IDR & USER_BUTTON_PIN) {
+			// Als de user knop ingedrukt is, laat de output zien;
+			sprintf(displayString, "%d", output);
+		}
+		else {
+			sprintf(displayString, "%d", input);
+		}
+
+		BSP_LCD_GLASS_Clear();
+		BSP_LCD_GLASS_DisplayString((uint8_t*) displayString);
+		HAL_Delay(1000);
 	}
 }
 
@@ -52,7 +85,7 @@ void SysTick_Handler(void)
 void SystemClock_Config(void)
 {
 	RCC_ClkInitTypeDef RCC_ClkInitStruct;
-	RCC_OscInitTypeDef RCC_OscInitStruct = { 0 };
+	RCC_OscInitTypeDef RCC_OscInitStruct;
 
 	/* Enable HSE Oscillator and Activate PLL with HSE as source */
 	RCC_OscInitStruct.OscillatorType      = RCC_OSCILLATORTYPE_HSI;
@@ -118,40 +151,55 @@ void DAC_Configuration(void)
 	GPIO_InitStructure.Speed = GPIO_SPEED_FREQ_LOW;
 	HAL_GPIO_Init(GPIOA, &GPIO_InitStructure);
 
-	HAL_DAC_Init(&hdac);
+	hdac.Instance = DAC1;
+	__DAC_CLK_ENABLE();
 
-	DAC->CR |= 0x38;
+	HAL_DAC_Init(&hdac);
 }
-void ConvertDAC(uint16_t value)
-{
-	HAL_DAC_SetValue(&hdac, DAC_CHANNEL_1 , DAC_ALIGN_12B_R, value);
-	DAC->CR |= 0x1;
-}
+
 
 void ADC_Configuration()
 {
 	GPIO_InitTypeDef gpioIS;
+
 	__GPIOC_CLK_ENABLE();
 	__ADC1_CLK_ENABLE();
-
-
+			  
 	gpioIS.Pin = GPIO_PIN_5;
 	gpioIS.Mode = GPIO_MODE_ANALOG;
 	gpioIS.Pull = GPIO_NOPULL;
-	gpioIS.Speed = GPIO_SPEED_FREQ_LOW;
+	gpioIS.Speed = GPIO_SPEED_FREQ_MEDIUM;
 	HAL_GPIO_Init(GPIOA, &gpioIS);
+													 	
+	HAL_NVIC_SetPriority(ADC1_IRQn, 0, 0);
+	HAL_NVIC_EnableIRQ(ADC1_IRQn);
+													 
+	ADC_ChannelConfTypeDef adcChannel;
 
-	ADC_InitTypeDef adcIS;
-	adcIS.ClockPrescaler = ADC_CLOCK_ASYNC_DIV1;
-	adcIS.Resolution = ADC_RESOLUTION_12B;
-	adcIS.DataAlign = ADC_DATAALIGN_RIGHT;
-	adcIS.ScanConvMode = ADC_SCAN_DISABLE;
-	adcIS.ChannelsBank = ADC_CHANNELS_BANK_A;
-	adcIS.ContinuousConvMode = DISABLE;
-	adcIS.ExternalTrigConv = ADC_EXTERNALTRIGCONVEDGE_NONE;
-	
-	hadc.Init = adcIS;
-
+	hadc.Instance = ADC1;
+	hadc.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV1;
+	hadc.Init.Resolution = ADC_RESOLUTION_12B;
+	hadc.Init.ScanConvMode = DISABLE;
+	hadc.Init.ContinuousConvMode = DISABLE;
+	hadc.Init.DiscontinuousConvMode = DISABLE;
+	hadc.Init.NbrOfDiscConversion = 0;
+	hadc.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+	hadc.Init.ExternalTrigConv = ADC_SOFTWARE_START;
+	hadc.Init.DataAlign = ADC_DATAALIGN_RIGHT;
+	hadc.Init.NbrOfConversion = 1;
+	hadc.Init.DMAContinuousRequests = ENABLE;
+	hadc.Init.EOCSelection = DISABLE;
 	HAL_ADC_Init(&hadc);
-	HAL_ADC_Start(&hadc);
+
+	adcChannel.Channel = ADC_CHANNEL_11;
+	adcChannel.Rank = 1;
+	adcChannel.SamplingTime = ADC_SAMPLETIME_9CYCLES;
+
+	if (HAL_ADC_ConfigChannel(&hadc, &adcChannel) != HAL_OK)
+	{
+		asm("bkpt 255");
+	}
 }
+
+
+

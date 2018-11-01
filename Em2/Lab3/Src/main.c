@@ -1,4 +1,6 @@
-#include "main.h"
+#include "stm32l1xx_hal.h"
+#include "stm32l152c_discovery.h"
+#include "stm32l152c_discovery_glass_lcd.h"
 
 extern LCD_HandleTypeDef LCDHandle;
 static volatile uint32_t TimingDelay;
@@ -6,6 +8,8 @@ void Delay(__IO uint32_t nCount);
 
 void SystemClock_Config(void);
 static void Error_Handler(void);
+
+int BlinkCounter = 0;
 
 int main(void)
 {
