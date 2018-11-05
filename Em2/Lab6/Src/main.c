@@ -31,6 +31,7 @@ int main(void)
 
 	for (;;)
 	{
+		HAL_ADC_Stop(&hadc);
 		HAL_Delay(2000);
 
 		switch (turn) {
@@ -60,7 +61,6 @@ int main(void)
 			continue;
 		}
 
-		HAL_ADC_Stop(&hadc);
 
 		char displayString[20];
 

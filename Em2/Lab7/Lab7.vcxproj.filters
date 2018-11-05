@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{802bd389-e234-4851-880f-ef13fb36d18a}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{551784eb-2c14-40b7-8622-cbe4df9b8cff}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{06b57973-71bf-40a5-91de-4cc601d6c83c}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Source files\Inc">
+      <UniqueIdentifier>{c694f5a8-1d2e-4520-9a45-0dfc461342dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Src">
+      <UniqueIdentifier>{59e4ec64-2215-448e-9f28-3fe93b79e319}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32L152C-Discovery">
+      <UniqueIdentifier>{98026326-257a-4aa1-9972-c322cddc5007}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Shared sources">
+      <UniqueIdentifier>{e4851935-867b-4de1-b439-56d3054ab253}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files">
+      <UniqueIdentifier>{ce487830-b8a1-45c7-8bcf-930312f6c7db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Inc">
+      <UniqueIdentifier>{295e155d-5f61-4d0e-b548-eede0f3aaf88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Src">
+      <UniqueIdentifier>{c9eb3586-16cc-4619-8bd0-efef8dd6cb6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32L152C-Discovery">
+      <UniqueIdentifier>{51dc1efc-89f5-4728-ac22-ad9306a41461}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files">
+      <UniqueIdentifier>{99be7a25-9e0c-4d78-a7a5-d59af936ab6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VisualGDB settings">
+      <UniqueIdentifier>{f6f49147-6f04-4c52-8aaf-f299a844f3f2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="readme.txt">
+      <Filter>Source files</Filter>
+    </None>
+    <ClCompile Include="Src\main.c">
+      <Filter>Source files\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\stm32l1xx_hal_msp.c">
+      <Filter>Source files\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\stm32l1xx_it.c">
+      <Filter>Source files\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\system_stm32l1xx.c">
+      <Filter>Source files\Src</Filter>
+    </ClCompile>
+    <None Include="STM32L152C-Discovery\STM32L152RCTx_FLASH.ld">
+      <Filter>Source files\STM32L152C-Discovery</Filter>
+    </None>
+    <ClCompile Include="..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\VendorSamples\L1\Drivers\BSP\STM32L152C-Discovery\stm32l152c_discovery.c">
+      <Filter>Source files\Shared sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\VendorSamples\L1\Drivers\BSP\STM32L152C-Discovery\stm32l152c_discovery_glass_lcd.c">
+      <Filter>Source files\Shared sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\VendorSamples\L1\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_cortex.c">
+      <Filter>Source files\Shared sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\VendorSamples\L1\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal.c">
+      <Filter>Source files\Shared sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\VendorSamples\L1\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_rcc_ex.c">
+      <Filter>Source files\Shared sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\VendorSamples\L1\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_pwr.c">
+      <Filter>Source files\Shared sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\VendorSamples\L1\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_lcd.c">
+      <Filter>Source files\Shared sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\VendorSamples\L1\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_pwr_ex.c">
+      <Filter>Source files\Shared sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\VendorSamples\L1\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_rcc.c">
+      <Filter>Source files\Shared sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\AppData\Local\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\VendorSamples\L1\Drivers\STM32L1xx_HAL_Driver\Src\stm32l1xx_hal_gpio.c">
+      <Filter>Source files\Shared sources</Filter>
+    </ClCompile>
+    <None Include="stm32.props">
+      <Filter>Source files\Device-specific files</Filter>
+    </None>
+    <ClCompile Include="$(BSP_ROOT)\STM32L1xxxx\StartupFiles\startup_stm32l152xc.c">
+      <Filter>Source files\Device-specific files</Filter>
+    </ClCompile>
+    <ClInclude Include="Inc\main.h">
+      <Filter>Header files\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\stm32l1xx_hal_conf.h">
+      <Filter>Header files\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\stm32l1xx_it.h">
+      <Filter>Header files\Inc</Filter>
+    </ClInclude>
+    <None Include="Lab7-Debug.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+    <None Include="Lab7-Release.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+    <None Include="stm32.xml">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+  </ItemGroup>
+</Project>

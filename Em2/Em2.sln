@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lab4", "Lab4\Lab4.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lab6", "Lab6\Lab6.vcxproj", "{8811BB52-767C-4A5F-A344-82E3668FD7D4}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lab7", "Lab7\Lab7.vcxproj", "{E42DEFF6-CEAA-4626-930B-D87C8AB070FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|VisualGDB = Debug|VisualGDB
@@ -39,6 +41,10 @@ Global
 		{8811BB52-767C-4A5F-A344-82E3668FD7D4}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{8811BB52-767C-4A5F-A344-82E3668FD7D4}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
 		{8811BB52-767C-4A5F-A344-82E3668FD7D4}.Release|VisualGDB.Build.0 = Release|VisualGDB
+		{E42DEFF6-CEAA-4626-930B-D87C8AB070FB}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
+		{E42DEFF6-CEAA-4626-930B-D87C8AB070FB}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
+		{E42DEFF6-CEAA-4626-930B-D87C8AB070FB}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
+		{E42DEFF6-CEAA-4626-930B-D87C8AB070FB}.Release|VisualGDB.Build.0 = Release|VisualGDB
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
