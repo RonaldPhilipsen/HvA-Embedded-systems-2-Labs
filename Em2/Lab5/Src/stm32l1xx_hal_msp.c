@@ -1,7 +1,6 @@
 /**
-/**
   ******************************************************************************
-  * @file    LCD/LCD_SegmentsDrive/Src/stm32l1xx_hal_msp.c
+  * @file    COMP/COMP_Interrupt/Src/stm32l1xx_hal_msp.c
   * @author  MCD Application Team
   * @brief   HAL MSP module.
   ******************************************************************************
@@ -41,8 +40,7 @@
   * @{
   */
 
-/** @defgroup HAL_MSP
-  * @brief HAL MSP module.
+/** @defgroup COMP_Interrupt
   * @{
   */
 
@@ -58,85 +56,62 @@
   */
 
 /**
-  * @brief LCD MSP Init.
-  * @param hlcd: LCD handle
+  * @brief COMP MSP Initialization 
+  *        This function configures the hardware resources used in this example:
+  *           - Peripheral's clock enable
+  *           - Peripheral's GPIO Configuration  
+  *           - NVIC configuration for COMP interrupt request enable
+  * @param hcomp: COMP handle pointer
   * @retval None
   */
- void HAL_LCD_MspInit(LCD_HandleTypeDef *hlcd)
+void HAL_COMP_MspInit(COMP_HandleTypeDef *hcomp)
 {
-  GPIO_InitTypeDef  GPIO_InitStruct;
-  RCC_OscInitTypeDef RCC_OscInitStruct;
+  GPIO_InitTypeDef      GPIO_InitStruct;
 
-  /*##-1- Enable PWR  peripheral Clock #######################################*/
-  __HAL_RCC_PWR_CLK_ENABLE();
+  /*##-1- Enable peripherals and GPIO Clocks #################################*/
+  /* Enable GPIO clock ***************************************************/
+  COMPx_GPIO_CLK_ENABLE();
   
-  /*##-2- Allow Access and Reset the Backup Domaine ##########################*/ 
-  /* Allow Access to Backup Domaine */
-  HAL_PWR_EnableBkUpAccess();
+  /* Enable COMP peripheral clock ****************************************/
+  __HAL_RCC_COMP_CLK_ENABLE();
   
-  /* Reset the Backup Domaine */
-  __HAL_RCC_BACKUPRESET_FORCE(); 
-  __HAL_RCC_BACKUPRESET_RELEASE();
-  
-  /*##-3- Configue LSE as RTC clock soucre ###################################*/ 
-  RCC_OscInitStruct.OscillatorType =  RCC_OSCILLATORTYPE_LSE;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
-  RCC_OscInitStruct.LSEState = RCC_LSE_ON;
-  if(HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
-  { 
-    /* Infinite loop */
-    while(1);
-  }
-  __HAL_RCC_RTC_CONFIG(RCC_RTCCLKSOURCE_LSE);
-  
-  
-  /*##-4- Enable LCD GPIO Clocks #############################################*/
-  __HAL_RCC_GPIOA_CLK_ENABLE();
-  __HAL_RCC_GPIOB_CLK_ENABLE();
-  __HAL_RCC_GPIOC_CLK_ENABLE();
-  
-  /*##-5- Configure peripheral GPIO ##########################################*/
-  /* Configure Output for LCD */
-  /* Port A */  
-  GPIO_InitStruct.Pin       =  GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_8 | GPIO_PIN_9 |GPIO_PIN_10 |GPIO_PIN_15;
-  GPIO_InitStruct.Mode      = GPIO_MODE_AF_PP;
-  GPIO_InitStruct.Pull      = GPIO_NOPULL;
-  GPIO_InitStruct.Speed     = GPIO_SPEED_FREQ_VERY_HIGH;
-  GPIO_InitStruct.Alternate = GPIO_AF11_LCD;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-  
-  
-  /* Configure Output for LCD */
-  /* Port B */  
-  GPIO_InitStruct.Pin       = GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_8 | GPIO_PIN_9 \
-    | GPIO_PIN_10 | GPIO_PIN_11 | GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15; 
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-  
-  
-  /* Configure Output for LCD */
-  /* Port C*/  
-  GPIO_InitStruct.Pin       = GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_6 \
-    | GPIO_PIN_7 | GPIO_PIN_8 | GPIO_PIN_9 | GPIO_PIN_10 |GPIO_PIN_11 ; 
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-  
-  /*##-6- Enable LCD peripheral Clock ########################################*/
-  __HAL_RCC_LCD_CLK_ENABLE();
+  /*##-2- Configure peripheral GPIO ##########################################*/
+  /* COMP GPIO pin configuration */
+  GPIO_InitStruct.Pin = COMPx_PIN;
+  GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(COMPx_GPIO_PORT, &GPIO_InitStruct);
+
+  /*##-3- Configure the NVIC for COMPx #######################################*/
+   /* Enable the COMPx IRQ Channel */
+  HAL_NVIC_SetPriority(COMPx_IRQn, 3, 0);
+  HAL_NVIC_EnableIRQ(COMPx_IRQn);
 }
 
 /**
-  * @brief LCD MSP De-Initialization 
-  *        This function freeze the hardware resources used in this example:
-  *          - Disable the Peripheral's clock
-  * @param hlcd: LCD handle pointer
+  * @brief  DeInitializes the COMP MSP.
+  * @param  hcomp: pointer to a COMP_HandleTypeDef structure that contains
+  *         the configuration information for the specified COMP.  
   * @retval None
   */
-void HAL_LCD_MspDeInit(LCD_HandleTypeDef *hlcd)
+void HAL_COMP_MspDeInit(COMP_HandleTypeDef *hcomp)
 {
-  /* Enable LCD reset state */
-  __HAL_RCC_LCD_FORCE_RESET();
-  
-  /* Release LCD from reset state */
-  __HAL_RCC_LCD_RELEASE_RESET();
+  /*##-1- De-initialize peripheral GPIO ######################################*/
+  /* De-initialize the COMPx GPIO pin */
+  HAL_GPIO_DeInit(COMPx_GPIO_PORT, COMPx_PIN);
+
+  /*##-2- Disable peripherals and GPIO clocks ################################*/
+  /* Disable COMP peripheral clock ***************************************/
+  __HAL_RCC_COMP_CLK_DISABLE();
+
+  /* Disable GPIO clock **************************************************/
+  /* Note: In a real application, by disabling GPIO port, be cautious to not  */
+  /* interfere with potential other peripherals using other GPIOs on the same */
+  /* port.                                                                    */
+  COMPx_GPIO_CLK_DISABLE();
+
+  /*##-3- Disable the NVIC for COMP ##########################################*/
+  HAL_NVIC_DisableIRQ(COMPx_IRQn);
 }
 
 /**
